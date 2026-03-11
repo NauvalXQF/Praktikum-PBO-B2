@@ -39,4 +39,5 @@ public abstract class Hewan {
         System.out.println("Suaranya: " + suara());
         System.out.println("Cara Geraknya: " + gerak());
     }
+    
 }
