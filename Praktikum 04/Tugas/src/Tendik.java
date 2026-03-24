@@ -35,4 +35,12 @@ public class Tendik extends Pegawai {
         System.out.println("Bidang: " + bidang);
         System.out.println("BUP: " + bup);
     }
+
+    public double hitungTunjangan(){
+        return 0.01 * getTahunMasaKerja() * getGajiPokok();
+    }
+
+    public double hitungTotalGaji(){
+        return hitungTunjangan() + getGajiPokok();
+    }
 }

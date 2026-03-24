@@ -31,7 +31,21 @@ public class DosenTetap extends Dosen {
     @Override
     public void printInfo(){
         super.printInfo();
+        System.out.println("Jabatan: Dosen Tetap");
+        System.out.println("Fakultas: " + getFakultas());
         System.out.println("NIDN: " + nidn);
-        System.out.println("BUP: " + bup);
+        System.out.println("Masa Kerja: " + getDetailMasaKerja()); // Manggil dari Pegawai
+        System.out.println("Tanggal Pensiun: " + hitungTanggalPensiun(bup)); // Manggil dari Pegawai
+        
+        // Cetak detail tunjangan
+        System.out.println("Tunjangan: 2% x " + getTahunMasaKerja() + " x Rp " + getGajiPokok() + " = Rp " + hitungTunjangan());
+    }
+
+    public double hitungTunjangan(){
+        return 0.02 * getTahunMasaKerja() * getGajiPokok();
+    }
+
+    public double hitungTotalGaji(){
+        return getGajiPokok() + hitungTunjangan();
     }
 }

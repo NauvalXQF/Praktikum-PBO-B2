@@ -1,3 +1,7 @@
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 public class Pegawai{
     // atribut
     private String nip;
@@ -59,6 +63,12 @@ public class Pegawai{
     public void setGajiPokok(double gajiPokok){
         this.gajiPokok = gajiPokok;
     }
+    
+    private LocalDate ubahKeTanggal(String tanggalTeks) {
+        // Alat ini ngajarin Java baca "5 Mei 1990" pakai kalender bahasa Indonesia
+        DateTimeFormatter formatIndo = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("id", "ID"));
+        return LocalDate.parse(tanggalTeks, formatIndo);
+    }
 
     //method
     public void printInfo(){
@@ -67,5 +77,31 @@ public class Pegawai{
         System.out.println("Tanggal Lahir: " + tanggalLahir);
         System.out.println("TMT: " + TMT);
         System.out.println("Gaji Pokok: " + gajiPokok);
+    }
+
+    // menthod
+    public int getTahunMasaKerja() {
+        LocalDate tanggalTmt = ubahKeTanggal(TMT);
+        LocalDate sekarang = LocalDate.now();
+        // Ngambil selisih tahunnya aja
+        return Period.between(tanggalTmt, sekarang).getYears(); 
+    }
+
+    public String getDetailMasaKerja() {
+        LocalDate tanggalTmt = ubahKeTanggal(TMT);
+        LocalDate sekarang = LocalDate.now();
+        Period selisih = Period.between(tanggalTmt, sekarang);
+        // Mengembalikan teks "X tahun Y bulan"
+        return selisih.getYears() + " tahun " + selisih.getMonths() + " bulan";
+    }
+
+    public String hitungTanggalPensiun(int bup) {
+        LocalDate tanggalLahirAsli = ubahKeTanggal(tanggalLahir);
+        
+        // Logika Pensiun: Ditambah umur BUP, ditambah 1 bulan, lalu di-set jadi tanggal 1
+        LocalDate tanggalPensiun = tanggalLahirAsli.plusYears(bup).plusMonths(1).withDayOfMonth(1);
+        
+        DateTimeFormatter formatIndo = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("id", "ID"));
+        return tanggalPensiun.format(formatIndo);
     }
 }

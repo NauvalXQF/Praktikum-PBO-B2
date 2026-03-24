@@ -40,4 +40,16 @@ public class DosenTamu extends Dosen{
         System.out.println("NIDK: " + nidk);
         System.out.println("Tanggal Berakhir Kontrak: " + tanggalBerakhirKontrak);
     }
+
+    public double hitungTunjangan(){
+        return 0.025 * getGajiPokok();
+    }
+
+    public double hitungTotalGaji(){
+        return getGajiPokok() + hitungTunjangan();
+    }
+
+    
+
+    
 }
