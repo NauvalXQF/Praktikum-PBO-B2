@@ -1,4 +1,5 @@
     public abstract class BangunDatar {
+    // atribut
     protected int jmlSisi;
     protected String warna;
     protected String border;
@@ -8,6 +9,7 @@
         ++counterBangunDatar;
     }
 
+    // konstruktor dengan parameter
     protected BangunDatar(int var1, String var2, String var3) {
         this.jmlSisi = var1;
         this.warna = var2;
@@ -15,6 +17,7 @@
         ++counterBangunDatar;
     }
 
+    // getter dan setter
     public int getJmlSisi() {
         return this.jmlSisi;
     }
