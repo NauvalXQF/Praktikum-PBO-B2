@@ -31,15 +31,13 @@ public class Seminar {
 
     // Prosedur tampilPeserta untuk menampilkan daftar semua peserta
     public static void tampilPeserta() {
-        System.out.println("\n========== DAFTAR PESERTA SEMINAR ==========");
+        System.out.println("\n DAFTAR PESERTA SEMINAR ");
         System.out.println("Total Peserta: " + banyakpeserta);
-        System.out.println("-------------------------------------------");
 
         for (int i = 0; i < banyakpeserta; i++) {
             System.out.println((i + 1) + ". Nomor: " + pesertas[i].getNomor() + 
                              " | Nama: " + pesertas[i].getNama());
         }
-        System.out.println("==========================================\n");
     }
 
     // Fungsi countMahasiswa untuk menghitung banyaknya peserta mahasiswa

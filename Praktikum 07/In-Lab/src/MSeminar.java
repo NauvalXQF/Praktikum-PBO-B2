@@ -4,9 +4,8 @@
 
 public class MSeminar {
     public static void main(String[] args) {
-        System.out.println("========== SOAL 4: POLIMORFISME UNIVERSAL INCLUSION ==========");
+        System.out.println(" SOAL 4: POLIMORFISME UNIVERSAL INCLUSION ");
         System.out.println("Program Aplikasi Seminar dengan Peserta Dosen dan Mahasiswa");
-        System.out.println("============================================================\n");
 
         // e. Membuat 2 objek dosen
         System.out.println("e. Membuat 2 objek Dosen:");
