@@ -27,3 +27,4 @@ __pycache__/
 # 🔒 KEAMANAN (Wajib Ada)
 # ==========================================
 .env
+/Praktikum10/In-Lab/jdbc_mhs_service/nbproject/private/

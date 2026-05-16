@@ -1,69 +1,74 @@
 import java.util.*;
 
 public class Teman {
-    private int nbelm;
     private List<String> Lnama;
+    private int nbelm;
+    
 
-    // Konstruktor
     public Teman() {
-        Lnama = new ArrayList<>();
-        nbelm = 0;
+        this.Lnama = new ArrayList<>();
+        this.nbelm = 0;
     }
 
-    // a. Jumlah elemen
-    public int getNbelm() {
-        return Lnama.size();
+    public int getNbelm() { return nbelm; }
+    
+    public String getNama(int indeks) { 
+        return Lnama.get(indeks); 
     }
-
-    // b. Ambil nama berdasarkan index
-    public String getNama(int indeks) {
-        return Lnama.get(indeks);
+    
+    public void setNama(int indeks, String nama) {   
+        Lnama.set(indeks, nama); 
     }
-
-    // c. Ubah nama di index tertentu
-    public void setNama(int indeks, String nama) {
-        Lnama.set(indeks, nama);
-    }
-
-    // d. Tambah nama
+    
     public void addNama(String nama) {
         Lnama.add(nama);
         nbelm++;
     }
-
-    // e. Hapus nama
+    
     public void delNama(String nama) {
-        Lnama.remove(nama);
-        nbelm--;
-    }
-
-    // f. Cek apakah nama ada
-    public boolean isMember(String nama) {
-        return Lnama.contains(nama);
-    }
-
-    // g. Ganti nama lama dengan baru
-    public void gantiNama(String nama, String namaBaru) {
-        int idx = Lnama.indexOf(nama);
-        if (idx != -1) {
-            Lnama.set(idx, namaBaru);
+        if (Lnama.remove(nama)) {
+            nbelm--;
         }
     }
-
-    // h. Hitung kemunculan nama
+    
+    public boolean isMember(String nama) { 
+        return Lnama.contains(nama); 
+    }
+    
+    public void gantiNama(String nama, String namabaru) {
+        int index = Lnama.indexOf(nama);
+        if (index != -1) {
+            Lnama.set(index, namabaru);
+        }
+    }
+    
     public int countNama(String nama) {
-        int count = 0;
-        for (String n : Lnama) {
-            if (n.equals(nama)) count++;
+        return Collections.frequency(Lnama, nama);
+    }
+    
+    public void showTeman() {
+        System.out.println("--- Daftar Teman ---");
+        for (String nama : Lnama) {
+            System.out.println("- " + nama);
         }
-        return count;
     }
 
-    // i. Tampilkan semua nama
-    public void showTeman() {
-        System.out.println("Daftar Teman:");
-        for (String n : Lnama) {
-            System.out.println("- " + n);
-        }
+    // Aplikasi Kelas Teman
+    public static void main(String[] args) {
+        Teman t = new Teman();
+        t.addNama("Andi");
+        t.addNama("Budi");
+        t.addNama("Caca");
+        t.addNama("Andi");
+
+        t.showTeman();
+        System.out.println("Jumlah teman: " + t.getNbelm());
+        System.out.println("Apakah Budi ada? " + t.isMember("Budi"));
+        System.out.println("Jumlah nama Andi: " + t.countNama("Andi"));
+        
+        t.gantiNama("Caca", "Chika");
+        t.delNama("Budi");
+        System.out.println("\nSetelah diubah:");
+        t.showTeman();
     }
 }
